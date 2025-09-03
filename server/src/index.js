@@ -17,7 +17,10 @@ const app = express();
 app.use('/api/stripe', webhookRoute);
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',  // Local development
+    'https://e-shop-gfx896r1m-simons-projects-9f974517.vercel.app'  // Your Vercel domain
+  ],
   credentials: true
 }));
 app.use(express.json({ limit: '1mb' }));
