@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { getCart, updateCartItem, removeCartItem } from '../api.js';
 import { Link } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 
 export default function Cart() {
+  const { user } = useOutletContext();
   const [cart, setCart] = useState(null);
-  const refresh = async () => setCart(await getCart());
+  const [loading, setLoading] = useState(true);
+  
+  const refresh = async () => {
+    setLoading(true);
+    const cartData = await getCart();
+    setCart(cartData);
+    setLoading(false);
+  };
+  
   useEffect(() => { refresh(); }, []);
-  if (!cart) return <p>Please log in to view your cart.</p>;
+  
+  if (loading) return <div className="loading">Loading cart...</div>;
+  if (!user) return <p>Please log in to view your cart.</p>;
+  if (!cart) return <div className="loading">Loading cart...</div>;
 
   const setQty = async (pid, q) => { await updateCartItem(pid, q); refresh(); };
   const remove = async (pid) => { await removeCartItem(pid); refresh(); };
