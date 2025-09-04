@@ -254,7 +254,7 @@ body {
 }
 
 .cart-remove-btn {
-  padding: 8px 16px;
+  padding: 10px 16px;
   background: #dc2626;
   color: white;
   border: none;
@@ -864,12 +864,14 @@ body {
 }
 
 /* Homepage Content Padding for Larger Screens */
-@media (min-width: 768px) {
-  .homepage-header {
+@media (min-width: 768px) and (max-width: 1248px) {
+  .features-grid {
     padding: 0 24px;
   }
-  
-  .features-grid {
+}
+
+@media (min-width: 768px) {
+  .homepage-header {
     padding: 0 24px;
   }
   
@@ -1664,6 +1666,108 @@ body {
   color: #2563eb;
   text-decoration: underline;
 }
+
+/* Homepage Footer */
+.homepage-footer {
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 40px;
+  padding: 40px 0 20px 0;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1260px) {
+  .footer-content {
+    padding: 0 20px 0 20px;
+  }
+}
+
+.footer-section h4 {
+  color: #1e293b;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  letter-spacing: 0.025em;
+}
+
+.footer-brand {
+  gap: 8px;
+}
+
+.footer-logo {
+  width: 20px;
+  height: 20px;
+  color: #3b82f6;
+}
+
+.footer-section p {
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 6px 0;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  margin: 8px 0;
+}
+
+.footer-section a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+  color: #3b82f6;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.footer-bottom p {
+  color: #94a3b8;
+  font-size: 12px;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Homepage specific container adjustments */
+.homepage-container {
+  padding-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .homepage-footer {
+    margin-top: 0;
+  }
+  
+  .footer-content {
+    text-align: center;
+  }
+  
+  .footer-section {
+    text-align: center;
+  }
+}
+
 
 /* Product Detail Page */
 .product-detail-container {
