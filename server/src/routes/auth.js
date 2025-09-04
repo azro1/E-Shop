@@ -47,7 +47,11 @@ router.get('/me', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  res.clearCookie(cookieName);
+  res.clearCookie(cookieName, {
+    httpOnly: true,
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    secure: process.env.NODE_ENV === 'production'
+  });
   res.json({ ok: true });
 });
 
