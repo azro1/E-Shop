@@ -19,7 +19,7 @@ app.use('/api/stripe', webhookRoute);
 app.use(cors({
   origin: [
     'http://localhost:5173',  // Local development
-    'https://e-shop-d2qst70l5-simons-projects-9f974517.vercel.app'  // Your new Vercel domain
+    'https://e-shop-qdlbun1ko-simons-projects-9f974517.vercel.app'  // Your new Vercel domain
   ],
   credentials: true
 }));
