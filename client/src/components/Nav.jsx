@@ -37,7 +37,7 @@ export default function Nav({ user, onLogout }) {
           </Link>
           
           {user && (
-            <Link to="/cart" className="nav-link">
+            <Link to="/cart" className="nav-link cart-link">
               <svg className="nav-icon cart-icon-outline" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M9 22a1 1 0 100-2 1 1 0 000 2zM20 22a1 1 0 100-2 1 1 0 000 2zM1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
               </svg>
@@ -72,6 +72,10 @@ export default function Nav({ user, onLogout }) {
           <div className="mobile-nav-content">
             <Link to="/" className="mobile-nav-link" onClick={toggleMenu}>
               Home
+            </Link>
+            
+            <Link to="/products-list" className="mobile-nav-link" onClick={toggleMenu}>
+              Shop
             </Link>
             
             {user && (

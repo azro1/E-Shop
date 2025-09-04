@@ -114,11 +114,29 @@ export default function ProductDetail() {
             <div className="product-meta">
               <div className="product-rating">
                 <div className="stars">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} viewBox="0 0 24 24" fill="currentColor" className="star">
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                  ))}
+                  {[...Array(5)].map((_, i) => {
+                    const rating = 4.8; // This should come from product data
+                    const starValue = i + 1;
+                    const isFullStar = starValue <= Math.floor(rating);
+                    const isPartialStar = starValue === Math.ceil(rating) && rating % 1 !== 0;
+                    const fillPercentage = isPartialStar ? (rating % 1) * 100 : (isFullStar ? 100 : 0);
+                    
+                    return (
+                      <div key={i} className="star-container">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#d1d5db" className="star star-outline">
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                        <svg 
+                          viewBox="0 0 24 24" 
+                          fill="#fbbf24" 
+                          className="star star-fill"
+                          style={{ clipPath: `inset(0 ${100 - fillPercentage}% 0 0)` }}
+                        >
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                      </div>
+                    );
+                  })}
                 </div>
                 <span className="rating-text">4.8 (127 reviews)</span>
               </div>
@@ -127,8 +145,8 @@ export default function ProductDetail() {
 
             {/* Product Price */}
             <div className="product-price-section">
-              <span className="product-price">${(p.price/100).toFixed(2)}</span>
-              <span className="product-currency">USD</span>
+              <span className="product-currency-symbol">£</span>
+              <span className="product-price">{(p.price/100).toFixed(2)}</span>
             </div>
 
             {/* Product Description */}
@@ -150,7 +168,7 @@ export default function ProductDetail() {
               <div className="detail-item">
                 <span className="detail-label">Availability:</span>
                 <span className={`detail-value ${p.inventory > 0 ? 'in-stock' : 'out-of-stock'}`}>
-                  {p.inventory > 0 ? `In Stock (${p.inventory})` : 'Out of Stock'}
+                  {p.inventory > 0 ? 'In Stock' : 'Out of Stock'}
                 </span>
               </div>
             </div>

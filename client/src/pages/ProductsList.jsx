@@ -13,6 +13,8 @@ export default function ProductsList() {
   const [loading, setLoading] = useState(true);
   const [searchLoading, setSearchLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [toast, setToast] = useState(null);
   
   const navigationCategories = {
     'All': ['All Products'],
@@ -105,6 +107,27 @@ export default function ProductsList() {
       setSelectedCategory(category);
     }
     setHasSearched(false);
+    setOpenDropdown(null); // Close dropdown after selection
+  };
+
+  const handleAddToCart = async (productId) => {
+    try {
+      await addToCart(productId);
+      // Find the product to show its name in the toast
+      const product = data.items.find(p => p._id === productId);
+      setToast({
+        message: `${product?.title || 'Item'} added to cart!`,
+        type: 'success'
+      });
+      // Auto-hide toast after 3 seconds
+      setTimeout(() => setToast(null), 3000);
+    } catch (error) {
+      setToast({
+        message: 'Failed to add item to cart',
+        type: 'error'
+      });
+      setTimeout(() => setToast(null), 3000);
+    }
   };
 
   if (loading) {
@@ -117,6 +140,21 @@ export default function ProductsList() {
 
   return (
     <>
+      {toast && (
+        <div className={`toast toast-${toast.type}`}>
+          <div className="toast-content">
+            <svg className="toast-icon" viewBox="0 0 24 24" fill="currentColor">
+              {toast.type === 'success' ? (
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              ) : (
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              )}
+            </svg>
+            <span>{toast.message}</span>
+          </div>
+        </div>
+      )}
+      
       <div className="products-header">
         <h1>Our Products</h1>
         <p>Browse our collection of premium products and great deals</p>
@@ -134,8 +172,14 @@ export default function ProductsList() {
               </button>
             ) : (
               <>
-                <h3 className={selectedDemographic === demographic ? 'active' : ''}>{demographic}</h3>
-                <div className="category-buttons">
+                <h3 
+                  className={selectedDemographic === demographic ? 'active' : ''}
+                  onClick={() => setOpenDropdown(openDropdown === demographic ? null : demographic)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  {demographic}
+                </h3>
+                <div className={`category-buttons ${openDropdown === demographic ? 'open' : ''}`}>
                   {categories.map(category => (
                     <button
                       key={category}
@@ -190,14 +234,14 @@ export default function ProductsList() {
           </div>
           <div className="grid">
             {filteredProducts.map(p => (
-              <ProductCard key={p._id} p={p} onAdd={addToCart} user={user} />
+              <ProductCard key={p._id} p={p} onAdd={handleAddToCart} user={user} />
             ))}
           </div>
         </>
       ) : (
         <div className="grid products-grid">
           {filteredProducts.map(p => (
-            <ProductCard key={p._id} p={p} onAdd={addToCart} user={user} />
+            <ProductCard key={p._id} p={p} onAdd={handleAddToCart} user={user} />
           ))}
         </div>
       )}

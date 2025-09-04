@@ -3,7 +3,7 @@ import { useNavigate, useOutletContext, useLocation, Link } from 'react-router-d
 import { login } from '../api.js';
 
 export default function Login() {
-  const { setUser } = useOutletContext();
+  const { setUser, setToast } = useOutletContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -15,10 +15,18 @@ export default function Login() {
     try {
       const u = await login(email, password);
       setUser(u);
-      // Redirect to intended destination or home page
+      setToast({
+        message: `Welcome back, ${u.name}!`,
+        type: 'success'
+      });
+      // Auto-dismiss toast after 3 seconds
+      setTimeout(() => setToast(null), 3000);
+      // Navigate immediately - toast will show on the new page
       const from = location.state?.from?.pathname || '/';
       nav(from, { replace: true });
-    } catch (e) { setError(e.message); }
+    } catch (e) { 
+      setError(e.message);
+    }
   };
 
   return (

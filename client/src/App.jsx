@@ -6,6 +6,7 @@ import Nav from './components/Nav.jsx';
 export default function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [toast, setToast] = useState(null);
   const location = useLocation();
   
   useEffect(() => { 
@@ -20,9 +21,30 @@ export default function App() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
   
+  // Clear toast when route changes (except for auth success toasts)
+  useEffect(() => {
+    // Don't clear success toasts immediately - let them show during navigation
+    if (toast && toast.type === 'error') {
+      setToast(null);
+    }
+  }, [location.pathname]);
+  
   const onLogout = async () => { 
-    await logout(); 
-    setUser(null); 
+    try {
+      await logout(); 
+      setUser(null);
+      setToast({
+        message: 'Successfully logged out',
+        type: 'success'
+      });
+      setTimeout(() => setToast(null), 3000);
+    } catch (error) {
+      setToast({
+        message: 'Failed to logout',
+        type: 'error'
+      });
+      setTimeout(() => setToast(null), 3000);
+    }
   };
   
   // Don't render anything while checking auth status
@@ -32,9 +54,24 @@ export default function App() {
   
   return (
     <>
+      {toast && (
+        <div className={`toast toast-${toast.type}`}>
+          <div className="toast-content">
+            <svg className="toast-icon" viewBox="0 0 24 24" fill="currentColor">
+              {toast.type === 'success' ? (
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              ) : (
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              )}
+            </svg>
+            <span>{toast.message}</span>
+          </div>
+        </div>
+      )}
+      
       <Nav user={user} onLogout={onLogout} />
       <main className={`container ${location.pathname === '/' ? 'homepage-container' : ''}`}>
-        <Outlet context={{ user, setUser, loading }} />
+        <Outlet context={{ user, setUser, loading, setToast }} />
       </main>
       {(location.pathname !== '/login' && location.pathname !== '/register' && location.pathname !== '/cart') && (
         <footer className="homepage-footer">

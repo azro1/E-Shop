@@ -3,7 +3,7 @@ import { useNavigate, useOutletContext, useLocation, Link } from 'react-router-d
 import { registerUser } from '../api.js';
 
 export default function Register() {
-  const { setUser } = useOutletContext();
+  const { setUser, setToast } = useOutletContext();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -50,10 +50,18 @@ export default function Register() {
     try {
       const u = await registerUser(name.trim(), email.trim(), password);
       setUser(u);
-      // Redirect to intended destination or home page
+      setToast({
+        message: `Welcome to E-Shop, ${u.name}!`,
+        type: 'success'
+      });
+      // Auto-dismiss toast after 3 seconds
+      setTimeout(() => setToast(null), 3000);
+      // Navigate immediately - toast will show on the new page
       const from = location.state?.from?.pathname || '/';
       nav(from, { replace: true });
-    } catch (e) { setError(e.message); }
+    } catch (e) { 
+      setError(e.message);
+    }
   };
 
   const getValidationMessage = () => {

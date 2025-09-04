@@ -119,14 +119,14 @@ export default function Checkout() {
                 {cart.items.map(item => (
                   <div key={item.product._id} className="checkout-order-item">
                     <span className="checkout-item-name">{item.product.title}</span>
-                    <span className="checkout-item-price">${(item.product.price/100).toFixed(2)}</span>
+                    <span className="checkout-item-price">£{(item.product.price/100).toFixed(2)}</span>
                   </div>
                 ))}
               </div>
               
               <div className="checkout-total">
                 <span>Total</span>
-                <span>${(cart.subtotal/100).toFixed(2)}</span>
+                <span>£{(cart.subtotal/100).toFixed(2)}</span>
               </div>
               
               <button className="checkout-pay-btn" onClick={pay}>
