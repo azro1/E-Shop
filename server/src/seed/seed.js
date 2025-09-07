@@ -28,20 +28,20 @@ const products = await Product.insertMany([
   {
     title: 'Classic Cotton Tee',
     description: 'Premium soft cotton t-shirt with a comfortable fit. Perfect for everyday wear, available in multiple colors. Made from 100% organic cotton for breathability and comfort.',
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=400&fit=crop&crop=center',
+    image: 'https://images.unsplash.com/photo-1716952029045-feb119b58583?w=600&h=400&fit=crop&crop=center',
     price: 1999,
     productCategory: 'Clothing',
     demographic: 'Men',
     inventory: 50
   },
   {
-    title: 'Cozy Pullover Hoodie',
-    description: 'Warm and comfortable hoodie made from premium fleece material. Features a kangaroo pocket and adjustable drawstring hood. Perfect for cool weather and casual outings.',
-    image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=400&fit=crop&crop=center',
-    price: 4999,
-    productCategory: 'Clothing',
-    demographic: 'Men',
-    inventory: 25
+    title: 'Ray-Ban Aviator Sunglasses',
+    description: 'Classic Ray-Ban Aviator sunglasses with crystal green lenses and gold-tone frame. Features 100% UV protection and iconic aviator design. Perfect for style and sun protection.',
+    image: 'https://images.unsplash.com/photo-1659506425360-f04a041e90df?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    price: 12999,
+    productCategory: 'Accessories',
+    demographic: 'Unisex',
+    inventory: 40
   },
   {
     title: 'Classic Baseball Cap',
@@ -55,25 +55,25 @@ const products = await Product.insertMany([
   {
     title: 'Elegant Summer Dress',
     description: 'Beautiful floral summer dress perfect for warm weather. Made from lightweight, breathable fabric with a flattering silhouette. Features adjustable straps and a flowing skirt.',
-    image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&h=400&fit=crop&crop=center',
+    image: 'https://images.unsplash.com/photo-1708456697489-423b34cf2650?w=600&h=400&fit=crop&crop=center',
     price: 8999,
     productCategory: 'Clothing',
     demographic: 'Women',
     inventory: 30
   },
   {
-    title: 'Kids Adventure Backpack',
-    description: 'Durable and colorful backpack designed specifically for children. Multiple compartments for organization, comfortable padded straps, and fun designs that kids love.',
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=400&fit=crop&crop=center',
-    price: 3499,
+    title: 'Wireless Gaming Mouse',
+    description: 'High-precision wireless gaming mouse with customizable RGB lighting. Features ergonomic design, programmable buttons, and ultra-fast response time for gaming and productivity.',
+    image: 'https://images.unsplash.com/photo-1551515300-2d3b7bb80920?w=600&h=400&fit=crop&crop=center',
+    price: 7999,
     productCategory: 'Accessories',
-    demographic: 'Kids',
-    inventory: 45
+    demographic: 'Unisex',
+    inventory: 50
   },
   {
     title: 'Natural Face Moisturizer',
     description: 'Hydrating face cream made with natural ingredients. Suitable for all skin types, provides long-lasting moisture and helps maintain healthy, glowing skin.',
-    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&h=400&fit=crop&crop=center',
+    image: 'https://images.unsplash.com/photo-1687662008695-281f2c5d96bb?w=600&h=400&fit=crop&crop=center',
     price: 2499,
     productCategory: 'Skincare',
     demographic: 'Unisex',
@@ -91,14 +91,14 @@ const products = await Product.insertMany([
   {
     title: 'Garden Tool Set',
     description: 'Complete set of essential gardening tools. Includes trowel, pruners, gloves, and more. Perfect for both beginners and experienced gardeners.',
-    image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop&crop=center',
+    image: 'https://images.unsplash.com/photo-1687457340782-1176f83e9ea5?w=600&h=400&fit=crop&crop=center',
     price: 5999,
     productCategory: 'Home & Garden',
     demographic: 'Unisex',
     inventory: 35
   },
   {
-    title: 'Classic Running Shoes',
+    title: 'Nike Running Shoes',
     description: 'Comfortable and lightweight running shoes with excellent cushioning. Perfect for daily runs, gym workouts, or casual wear. Available in multiple colors.',
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=400&fit=crop&crop=center',
     price: 8999,
@@ -107,9 +107,9 @@ const products = await Product.insertMany([
     inventory: 40
   },
   {
-    title: 'Kids Running Shoes',
-    description: 'Lightweight and comfortable running shoes designed specifically for kids. Features excellent cushioning and support for daily runs and active play.',
-    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&h=400&fit=crop&crop=center',
+    title: 'AirSpeed Grey Triumph Sneakers',
+    description: 'Stylish and comfortable sneakers with a modern design. Features excellent cushioning and support for everyday wear and casual activities.',
+    image: 'https://images.unsplash.com/photo-1705675804943-c6fb96258aa2?w=600&h=400&fit=crop&crop=center',
     price: 3999,
     productCategory: 'Footwear',
     demographic: 'Kids',
@@ -118,7 +118,7 @@ const products = await Product.insertMany([
   {
     title: 'Elegant Heels',
     description: 'Sophisticated high heels perfect for formal occasions. Made from premium materials with comfortable padding and secure fit. Available in black and nude.',
-    image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&h=400&fit=crop&crop=center',
+    image: 'https://images.unsplash.com/photo-1618274158630-bc47a614b3a5?w=600&h=400&fit=crop&crop=center',
     price: 12999,
     productCategory: 'Footwear',
     demographic: 'Women',
@@ -127,7 +127,7 @@ const products = await Product.insertMany([
   {
     title: 'Women\'s Sneakers',
     description: 'Durable and comfortable sneakers designed for active women. Lightweight construction with excellent grip and stylish design perfect for everyday wear.',
-    image: 'https://images.unsplash.com/photo-1562183241-b937e95585b6?w=600&h=400&fit=crop&crop=center',
+    image: 'https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?w=600&h=400&fit=crop&crop=center',
     price: 6999,
     productCategory: 'Footwear',
     demographic: 'Women',
