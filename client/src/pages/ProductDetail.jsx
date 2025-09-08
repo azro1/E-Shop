@@ -4,7 +4,7 @@ import { getProduct, addToCart } from '../api.js';
 import { extractIdFromSlug } from '../utils/slugify.js';
 
 export default function ProductDetail() {
-  const { user } = useOutletContext();
+  const { user, setToast } = useOutletContext();
   const navigate = useNavigate();
   const { slug } = useParams();
   const [p, setP] = useState(null);
@@ -31,9 +31,16 @@ export default function ProductDetail() {
     setAddingToCart(true);
     try {
       await addToCart(p._id, quantity);
-      // You could add a success toast here
+      setToast({ 
+        message: `${quantity} ${quantity === 1 ? 'item' : 'items'} added to cart!`, 
+        type: 'success' 
+      });
     } catch (error) {
       console.error('Failed to add to cart:', error);
+      setToast({ 
+        message: 'Failed to add item to cart. Please try again.', 
+        type: 'error' 
+      });
     } finally {
       setAddingToCart(false);
     }
