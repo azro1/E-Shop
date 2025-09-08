@@ -14,7 +14,7 @@ dotenv.config();
 const app = express();
 
 // Stripe webhook must receive raw body
-app.use('/api/stripe', webhookRoute);
+app.use('/api/webhook', webhookRoute);
 
 app.use(cors({
   origin: [
