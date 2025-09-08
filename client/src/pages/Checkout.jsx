@@ -5,7 +5,14 @@ import { createCheckout, getCart } from '../api.js';
 export default function Checkout() {
   const [msg, setMsg] = useState('');
   const [cart, setCart] = useState(null);
-  useEffect(() => { getCart().then(setCart).catch(()=>{}); }, []);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => { 
+    getCart()
+      .then(setCart)
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
 
   const pay = async () => {
     try {
@@ -56,7 +63,12 @@ export default function Checkout() {
             </div>
           )}
           
-          {cart && cart.items.length > 0 ? (
+          {loading ? (
+            <div className="checkout-loading">
+              <div className="spinner"></div>
+              <p>Loading your cart...</p>
+            </div>
+          ) : cart && cart.items.length > 0 ? (
             <>
               <div className="checkout-order-items">
                 {cart.items.map(item => (
