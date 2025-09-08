@@ -35,12 +35,14 @@ export default function ProductDetail() {
         message: `${quantity} ${quantity === 1 ? 'item' : 'items'} added to cart!`, 
         type: 'success' 
       });
+      setTimeout(() => setToast(null), 3000);
     } catch (error) {
       console.error('Failed to add to cart:', error);
       setToast({ 
         message: 'Failed to add item to cart. Please try again.', 
         type: 'error' 
       });
+      setTimeout(() => setToast(null), 3000);
     } finally {
       setAddingToCart(false);
     }
