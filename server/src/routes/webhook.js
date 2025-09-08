@@ -6,11 +6,14 @@ import Cart from '../models/Cart.js';
 const router = express.Router();
 
 router.post('/', express.raw({ type: 'application/json' }), async (req, res) => {
+  console.log('Webhook received!', req.method, req.url);
   const sig = req.headers['stripe-signature'];
   let event;
   try {
     event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+    console.log('Webhook event type:', event.type);
   } catch (err) {
+    console.log('Webhook error:', err.message);
     return res.status(400).send(`Webhook error: ${err.message}`);
   }
 
