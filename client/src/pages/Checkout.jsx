@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { createCheckout, getCart } from '../api.js';
 
 export default function Checkout() {
+  // Updated checkout page
   const [msg, setMsg] = useState('');
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
