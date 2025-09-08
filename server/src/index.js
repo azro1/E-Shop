@@ -13,9 +13,6 @@ dotenv.config();
 
 const app = express();
 
-// Stripe webhook must receive raw body
-app.use('/api/webhook', webhookRoute);
-
 app.use(cors({
   origin: [
     'http://localhost:5173',  // Local development
@@ -24,6 +21,9 @@ app.use(cors({
   ],
   credentials: true
 }));
+
+// Stripe webhook must receive raw body (after CORS)
+app.use('/api/webhook', webhookRoute);
 app.use(express.json({ limit: '1mb' }));
 app.use(cookieParser());
 

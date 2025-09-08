@@ -5,6 +5,11 @@ import Cart from '../models/Cart.js';
 
 const router = express.Router();
 
+// Test route to verify webhook endpoint exists
+router.get('/', (req, res) => {
+  res.json({ message: 'Webhook endpoint is working' });
+});
+
 router.post('/', express.raw({ type: 'application/json' }), async (req, res) => {
   console.log('Webhook received!', req.method, req.url);
   const sig = req.headers['stripe-signature'];
