@@ -219,6 +219,23 @@ body {
   font-weight: 500;
 }
 
+.cart-empty .btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  max-width: 150px;
+}
+
+@media (max-width: 768px) {
+  .cart-empty .btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    max-width: 120px;
+  }
+}
+
 .cart-items {
   display: flex;
   flex-direction: column;

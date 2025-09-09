@@ -54,6 +54,7 @@ export default function Cart() {
       {cart.items.length === 0 ? (
         <div className="cart-empty">
           <p>Your cart is empty. Start shopping to add items!</p>
+          <Link to="/products-list" className="btn btn-primary">Shop</Link>
         </div>
       ) : (
         <>
