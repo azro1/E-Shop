@@ -40,7 +40,7 @@ const products = await Product.insertMany([
     image: 'https://images.unsplash.com/photo-1659506425360-f04a041e90df?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     price: 12999,
     productCategory: 'Accessories',
-    demographic: 'Unisex',
+    demographic: 'Men',
     inventory: 40
   },
   {
@@ -107,7 +107,7 @@ const products = await Product.insertMany([
     inventory: 40
   },
   {
-    title: 'AirSpeed Grey Triumph Sneakers',
+    title: 'AirSpeed Triumph',
     description: 'Stylish and comfortable sneakers with a modern design. Features excellent cushioning and support for everyday wear and casual activities.',
     image: 'https://images.unsplash.com/photo-1705675804943-c6fb96258aa2?w=600&h=400&fit=crop&crop=center',
     price: 3999,
@@ -125,12 +125,12 @@ const products = await Product.insertMany([
     inventory: 25
   },
   {
-    title: 'Women\'s Sneakers',
+    title: 'Adidas Continental 80',
     description: 'Durable and comfortable sneakers designed for active women. Lightweight construction with excellent grip and stylish design perfect for everyday wear.',
     image: 'https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?w=600&h=400&fit=crop&crop=center',
     price: 6999,
     productCategory: 'Footwear',
-    demographic: 'Women',
+    demographic: 'Men',
     inventory: 30
   },
   {
@@ -170,13 +170,76 @@ const products = await Product.insertMany([
     inventory: 30
   },
   {
-    title: 'Adidas Rivalry (Mens)',
+    title: 'Adidas Rivalry',
     description: 'High-performance running shoes with responsive cushioning. Perfect for daily runs and athletic activities.',
     image: 'https://images.unsplash.com/photo-1706550633743-08b7732e4d4c?w=600&h=400&fit=crop&crop=center',
     price: 18000,
     productCategory: 'Footwear',
     demographic: 'Men',
     inventory: 80
+  },
+  {
+    title: 'Classic Denim Jeans',
+    description: 'Premium denim jeans with a classic straight fit. Made from high-quality cotton denim with a comfortable waistband and durable construction. Perfect for casual wear and everyday activities.',
+    image: 'https://images.unsplash.com/photo-1714143136385-c449be6760f6?w=600&h=400&fit=crop&crop=center',
+    price: 7999,
+    productCategory: 'Clothing',
+    demographic: 'Men',
+    inventory: 60
+  },
+  {
+    title: 'Premium Linen Shirt',
+    description: 'Elegant linen shirt made from 100% natural linen fabric. Features a relaxed fit, breathable material, and classic button-down design. Perfect for warm weather and casual occasions.',
+    image: 'https://images.unsplash.com/photo-1713881630214-82c44407cf25?w=600&h=400&fit=crop&crop=center',
+    price: 2999,
+    productCategory: 'Clothing',
+    demographic: 'Men',
+    inventory: 40
+  },
+  {
+    title: 'Men\'s Travel Backpack',
+    description: 'Durable and spacious backpack designed for travel and everyday use. Features multiple compartments, padded shoulder straps, and water-resistant material. Perfect for work, travel, or outdoor adventures.',
+    image: 'https://images.unsplash.com/photo-1627941688013-d1aa0612e2de?w=600&h=400&fit=crop&crop=center',
+    price: 8999,
+    productCategory: 'Accessories',
+    demographic: 'Men',
+    inventory: 25
+  },
+  {
+    title: 'CHANEL Rouge Coco [444 Gabriel]',
+    description: 'Classic red lipstick from Coco Chanel with long-lasting, highly pigmented formula. Features a luxurious matte finish and iconic Chanel packaging. Perfect for special occasions and everyday elegance.',
+    image: 'https://images.unsplash.com/photo-1600852070342-94420af50802?w=600&h=400&fit=crop&crop=center',
+    price: 34999,
+    productCategory: 'Makeup',
+    demographic: 'Women',
+    inventory: 15
+  },
+  {
+    title: 'Puma RS-X Camo Pink',
+    description: 'Bold and futuristic sneakers with chunky layered design and pink colorway. Features comfortable cushioning, breathable upper, and eye-catching street style aesthetic. Perfect for fashion-forward individuals.',
+    image: 'https://images.unsplash.com/photo-1608666634759-4376010f863d?w=600&h=400&fit=crop&crop=center',
+    price: 12999,
+    productCategory: 'Footwear',
+    demographic: 'Women',
+    inventory: 30
+  },
+  {
+    title: 'Floral Print Scarf',
+    description: 'Elegant silk scarf featuring beautiful floral patterns and vibrant colors. Made from premium silk material with soft, luxurious feel. Perfect accessory for adding style to any outfit.',
+    image: 'https://images.unsplash.com/photo-1623832101940-647285e32a58?w=600&h=400&fit=crop&crop=top',
+    price: 3999,
+    productCategory: 'Accessories',
+    demographic: 'Women',
+    inventory: 35
+  },
+  {
+    title: 'Women\'s Designer Sunglasses',
+    description: 'Stylish and elegant sunglasses with UV protection and trendy frame design. Features high-quality lenses and comfortable fit. Perfect for sunny days and fashion-forward looks.',
+    image: 'https://images.unsplash.com/photo-1730855910631-cfdc46cbd3f5?w=600&h=400&fit=crop&crop=center',
+    price: 8999,
+    productCategory: 'Accessories',
+    demographic: 'Women',
+    inventory: 20
   }
 ]);
 
